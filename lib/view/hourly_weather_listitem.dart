@@ -6,16 +6,15 @@ import '../model/weather_model.dart';
 class HourlyWeatherListItem extends StatelessWidget {
   final Hour? hour;
 
-  const HourlyWeatherListItem({Key? key, this.hour})
-      : super(key: key);
-
+  const HourlyWeatherListItem({Key? key, this.hour}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.all(8),
       padding: const EdgeInsets.all(8),
-      width: 120,
+      //height: 100,
+      width: 60,
       decoration: BoxDecoration(
           color: Colors.white24, borderRadius: BorderRadius.circular(20)),
       child: Column(
@@ -27,23 +26,25 @@ class HourlyWeatherListItem extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.only(top: 8.0),
-                child: Text(hour?.tempC?.round().toString() ??"",
+                child: Text(hour?.tempC?.round().toString() ?? "",
                     style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
-                        fontSize: 18)),
+                        fontSize: 16)),
               ),
               const Text("o", style: TextStyle(color: Colors.white)),
             ],
           ),
           Container(
-            height: 50,
-            decoration:
-            const BoxDecoration(shape: BoxShape.circle, color: Colors.teal),
+            height: 40,
+            decoration: const BoxDecoration(
+                shape: BoxShape.circle, color: Colors.indigo),
             child: Image.network("https:${hour?.condition?.icon.toString()}"),
           ),
-          Text(DateFormat.j().format(
-              DateTime.parse(hour?.time?.toString() ?? "")), style: const TextStyle(color: Colors.white)),
+          Text(
+              DateFormat.j()
+                  .format(DateTime.parse(hour?.time?.toString() ?? "")),
+              style: const TextStyle(color: Colors.white)),
         ],
       ),
     );

@@ -63,12 +63,12 @@ class TodayWeather extends StatelessWidget {
         WeatherBg(
           weatherType: getWeatherType(weatherModel?.current),
           width: MediaQuery.of(context).size.width,
-          height: 330,
+          height: 280,
         ),
         SizedBox(
           width: double.infinity,
           //padding: EdgeInsets.all(8),
-          height: 340,
+          height: 280,
           child: Column(
             children: [
               Container(
@@ -82,7 +82,7 @@ class TodayWeather extends StatelessWidget {
                     Text(
                       weatherModel?.location?.name ?? "",
                       style: TextStyle(
-                        fontSize: 25,
+                        fontSize: 18,
                         fontWeight: FontWeight.bold,
                         color: Colors.indigo.withGreen(255),
                         // foreground: Paint()..shader = shader,
@@ -93,7 +93,7 @@ class TodayWeather extends StatelessWidget {
                             weatherModel?.current?.lastUpdated.toString() ??
                                 "")),
                         style: TextStyle(
-                          fontSize: 22,
+                          fontSize: 16,
                           fontWeight: FontWeight.bold,
                           color: Colors.indigo.withGreen(255),
                           //foreground: Paint()..shader = shader,
@@ -102,9 +102,10 @@ class TodayWeather extends StatelessWidget {
                 ),
               ),
               Row(
+                //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   const SizedBox(
-                    width: 20,
+                    width: 50,
                   ),
                   Container(
                     decoration: const BoxDecoration(
@@ -115,8 +116,8 @@ class TodayWeather extends StatelessWidget {
                       children: [
                         Image.network(
                           "https:${weatherModel?.current?.condition?.icon ?? ""}",
-                          width: 100,
-                          height: 100,
+                          width: 60,
+                          height: 60,
                         ),
                       ],
                     ),
@@ -136,7 +137,7 @@ class TodayWeather extends StatelessWidget {
                                       .toString() ??
                                   "",
                               style: const TextStyle(
-                                  fontSize: 70,
+                                  fontSize: 50,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.pink),
                             ),
@@ -144,7 +145,7 @@ class TodayWeather extends StatelessWidget {
                           const Text(
                             'o',
                             style: TextStyle(
-                                fontSize: 20,
+                                fontSize: 14,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.pink
                                 //foreground: Paint()..shader = shader,
@@ -155,16 +156,16 @@ class TodayWeather extends StatelessWidget {
                       Text(
                         weatherModel?.current?.condition?.text ?? "",
                         style: const TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white
-                            //foreground: Paint()..shader = shader,
-                            ),
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.indigo,
+                          //foreground: Paint()..shader = shader,
+                        ),
                       )
                     ],
                   ),
                   const SizedBox(
-                    width: 20,
+                    width: 40,
                   ),
                   //Spacer()
                 ],

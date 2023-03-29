@@ -12,6 +12,7 @@ class FutureForcastListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 50,
       decoration: BoxDecoration(
           color: Colors.white24, borderRadius: BorderRadius.circular(20)),
       padding: const EdgeInsets.symmetric(vertical: 8),
@@ -33,7 +34,7 @@ class FutureForcastListItem extends StatelessWidget {
           Expanded(
               child: Text(
                   "^${forecastday?.day?.maxtempC?.round()}/${forecastday?.day?.mintempC?.round()}",
-                  style: const TextStyle(color: Colors.white, fontSize: 18))),
+                  style: const TextStyle(color: Colors.white, fontSize: 16))),
         ],
       ),
     );

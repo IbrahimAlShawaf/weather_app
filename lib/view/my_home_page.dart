@@ -18,12 +18,61 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   ApiService apiService = ApiService();
+  String queryText = "auto:ip";
+  final _textFieldController = TextEditingController();
+
+  _showTextInputDialog(BuildContext context) async {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text('Search Location'),
+            content: TextField(
+              controller: _textFieldController,
+              decoration: const InputDecoration(hintText: "search by city,zip"),
+            ),
+            actions: <Widget>[
+              ElevatedButton(
+                child: const Text("Cancel"),
+                onPressed: () => Navigator.pop(context),
+              ),
+              ElevatedButton(
+                  child: const Text('OK'),
+                  onPressed: () {
+                    if (_textFieldController.text.isEmpty) {
+                      return;
+                    }
+                    Navigator.pop(context, _textFieldController.text);
+                  }),
+            ],
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
         title: const Text("Weather App"),
+        actions: [
+          IconButton(
+              onPressed: () async {
+                _textFieldController.clear();
+                String text = await _showTextInputDialog(context);
+                setState(() {
+                  queryText = text;
+                });
+              },
+              icon: const Icon(Icons.search)),
+          IconButton(
+              onPressed: () {
+                setState(() {
+                  queryText = "auto:ip";
+                });
+              },
+              icon: const Icon(Icons.my_location)),
+        ],
       ),
       body: SafeArea(
         child: FutureBuilder(
@@ -39,20 +88,21 @@ class _MyHomePageState extends State<MyHomePage> {
                     TodayWeather(
                       weatherModel: weatherModel,
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
+                    // const SizedBox(
+                    //   height: 8,
+                    // ),
+                    // hourly weather =========>
                     const Text(
                       "Weather By Hours",
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 22,
+                        fontSize: 18,
                       ),
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    // hourly weather =========>
+                    // const SizedBox(
+                    //   height: 8,
+                    // ),
+
                     SizedBox(
                       height: 150,
                       child: ListView.builder(
@@ -68,22 +118,25 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ?.forecast?.forecastday?[0].hour?.length ??
                             0,
                         scrollDirection: Axis.horizontal,
+                        //shrinkWrap: true,
+                        // physics: NeverScrollableScrollPhysics(),
                       ),
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
+                    // const SizedBox(
+                    //   height: 8,
+                    // ),
+                    // future forcast weather =========>
                     const Text(
                       "Next 7 Days Weather",
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 22,
+                        fontSize: 18,
                       ),
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    // future forcast weather =========>
+                    // const SizedBox(
+                    //   height: 8,
+                    // ),
+
                     Expanded(
                       child: ListView.builder(
                         itemBuilder: (context, index) {
@@ -96,6 +149,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         scrollDirection: Axis.vertical,
                         shrinkWrap: true,
                         padding: EdgeInsets.zero,
+                        // physics: NeverScrollableScrollPhysics(),
                       ),
                     ),
                   ],
@@ -111,7 +165,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: CircularProgressIndicator(),
             );
           },
-          future: apiService.getWeatherData("gaza strip palestine"),
+          future: apiService.getWeatherData(queryText),
         ),
       ),
     );
