@@ -84,7 +84,7 @@ class TodayWeather extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        color: Colors.indigo.withGreen(255),
+                        color: Colors.black.withRed(150),
                         // foreground: Paint()..shader = shader,
                       ),
                     ),
@@ -95,7 +95,7 @@ class TodayWeather extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
-                          color: Colors.indigo.withGreen(255),
+                          color: Colors.black.withRed(100),
                           //foreground: Paint()..shader = shader,
                         )),
                   ],
@@ -155,10 +155,10 @@ class TodayWeather extends StatelessWidget {
                       ),
                       Text(
                         weatherModel?.current?.condition?.text ?? "",
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.bold,
-                          color: Colors.indigo,
+                          color: Colors.black.withRed(150),
                           //foreground: Paint()..shader = shader,
                         ),
                       )
@@ -184,36 +184,36 @@ class TodayWeather extends StatelessWidget {
                       children: [
                         Column(
                           children: [
-                            const Text(
+                            Text(
                               "Feel Like",
                               style: TextStyle(
                                   fontSize: 15,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w300),
+                                  color: Colors.black.withBlue(100),
+                                  fontWeight: FontWeight.bold),
                             ),
                             Text(
                                 weatherModel?.current?.feelslikeC
                                         ?.round()
                                         .toString() ??
                                     "",
-                                style: const TextStyle(
+                                style: TextStyle(
                                     fontSize: 13,
-                                    color: Colors.white,
+                                    color: Colors.red.withBlue(100),
                                     fontWeight: FontWeight.bold)),
                           ],
                         ),
                         Column(
                           children: [
-                            const Text("Wind",
+                            Text("Wind",
                                 style: TextStyle(
                                     fontSize: 15,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w300)),
+                                    color: Colors.black.withBlue(100),
+                                    fontWeight: FontWeight.bold)),
                             Text(
                                 "${weatherModel?.current?.windKph?.round()} km/h",
-                                style: const TextStyle(
+                                style: TextStyle(
                                     fontSize: 13,
-                                    color: Colors.white,
+                                    color: Colors.red.withBlue(100),
                                     fontWeight: FontWeight.bold)),
                           ],
                         ),
@@ -227,29 +227,29 @@ class TodayWeather extends StatelessWidget {
                       children: [
                         Column(
                           children: [
-                            const Text("Humidity",
+                            Text("Humidity",
                                 style: TextStyle(
                                     fontSize: 15,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w300)),
+                                    color: Colors.black.withBlue(100),
+                                    fontWeight: FontWeight.bold)),
                             Text("${weatherModel?.current?.humidity}%",
-                                style: const TextStyle(
+                                style: TextStyle(
                                     fontSize: 13,
-                                    color: Colors.white,
+                                    color: Colors.red.withBlue(100),
                                     fontWeight: FontWeight.bold)),
                           ],
                         ),
                         Column(
                           children: [
-                            const Text("Visibility",
+                            Text("Visibility",
                                 style: TextStyle(
                                     fontSize: 15,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w300)),
+                                    color: Colors.black.withBlue(100),
+                                    fontWeight: FontWeight.bold)),
                             Text("${weatherModel?.current?.visKm?.round()} km",
-                                style: const TextStyle(
+                                style: TextStyle(
                                     fontSize: 13,
-                                    color: Colors.white,
+                                    color: Colors.red.withBlue(100),
                                     fontWeight: FontWeight.bold)),
                           ],
                         ),

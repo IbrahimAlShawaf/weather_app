@@ -54,7 +54,14 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: const Text("Weather App"),
+        backgroundColor: Colors.indigo,
+        title: const Text("Weather App",
+            style: TextStyle(
+              fontSize: 28,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+              //foreground: Paint()..shader = shader,
+            )),
         actions: [
           IconButton(
               onPressed: () async {
@@ -64,14 +71,20 @@ class _MyHomePageState extends State<MyHomePage> {
                   queryText = text;
                 });
               },
-              icon: const Icon(Icons.search)),
+              icon: const Icon(
+                Icons.search,
+                color: Colors.white,
+              )),
           IconButton(
               onPressed: () {
                 setState(() {
                   queryText = "auto:ip";
                 });
               },
-              icon: const Icon(Icons.my_location)),
+              icon: const Icon(
+                Icons.my_location_outlined,
+                color: Colors.white,
+              )),
         ],
       ),
       body: SafeArea(
@@ -118,8 +131,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ?.forecast?.forecastday?[0].hour?.length ??
                             0,
                         scrollDirection: Axis.horizontal,
-                        //shrinkWrap: true,
-                        // physics: NeverScrollableScrollPhysics(),
+                        // shrinkWrap: true,
+                        // physics: const NeverScrollableScrollPhysics(),
                       ),
                     ),
                     // const SizedBox(
@@ -127,7 +140,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     // ),
                     // future forcast weather =========>
                     const Text(
-                      "Next 7 Days Weather",
+                      "Next Days Weather",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 18,
